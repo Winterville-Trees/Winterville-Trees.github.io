@@ -17,11 +17,9 @@
             margin: 0;
         }
         </style>
-        <title>Winterville Commemorative Trees</title>
+        <title></title>
     </head>
     <body>
-    <h1 style="font-family:verdana;font-size:100%;text-indent:10px;margin-bottom:-10px">Winterville Commemorative Trees</h1>
-    <p style="font-family:verdana;text-indent:10px"><small>Click on tree of interest or search by tree number, donor, or honoree</small></p>
         <div id="map">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
@@ -55,7 +53,7 @@
             zoomControl:true, maxZoom:28, minZoom:1
         }).fitBounds([[33.965297115289985,-83.28057757544576],[33.96657484748377,-83.27742191042596]]);
         var hash = new L.Hash(map);
-        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a> &middot; <a href="https://www.cityofwinterville.com/tree-commission">Map created by the Winterville Tree Commission</a>');
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
         var bounds_group = new L.featureGroup([]);
@@ -190,6 +188,3 @@
         </script>
     </body>
 </html>
-
-
-
