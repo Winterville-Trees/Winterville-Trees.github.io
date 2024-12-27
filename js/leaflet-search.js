@@ -1,4 +1,4 @@
-/* 
+﻿/* 
  * Leaflet Control Search v2.7.0 - 2016-09-13 
  * 
  * Copyright 2016 Stefano Cudini 
