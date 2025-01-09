@@ -56,7 +56,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[33.96205840393701,-83.28581109310942],[33.973598333477796,-83.27189669063536]]);
+        }).fitBounds([[33.964567205319504,-83.28063692858831],[33.969765467399746,-83.2743691132365]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://www.cityofwinterville.com/tree-commission" target="_blank">Winterville Tree Commission</a> <br> <a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -221,11 +221,20 @@
               addLabel(layer, i);
               i++;
         });
-        map.addControl(new L.Control.Search({
+        var BBsearchControl = new L.Control.Search({
             layer: layer_WintervilleCommemorativeTrees_2,
             initial: false,
-            hideMarkerOnCollapse: true,
-            propertyName: 'SearchText'}));
+            zoom: 18,
+            hideMarkerOnCollapse: false, //false = circle persists until another search is made
+            autoCollapse: true,   //true = Search control automatically collapses after search
+            propertyName: 'SearchText'});
+
+        BBsearchControl.on('search:locationfound', function(e) {   //automatically open pop-up at found location
+            if(e.layer._popup)
+            e.layer.openPopup()});
+
+        map.addControl( BBsearchControl );   //inizialize search control
+
         document.getElementsByClassName('search-button')[0].className +=
          ' fa fa-binoculars';
         resetLabels([layer_WintervilleCommemorativeTrees_2]);
@@ -241,6 +250,7 @@
         </script>
     </body>
 </html>
+
 
 
 
